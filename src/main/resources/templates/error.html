@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/css/bootstrap.min.css}">
+
+    <title>Error/Access-Denied</title>
+</head>
+<body class="p-3 mb-2 bg-light text-black">
+<div class="container justify-content-center w-50 p-3" style="margin-top: 5em;">
+    <div class="alert alert-danger fill-parent">
+        <h1 class="display-5">Error or Access Denied</h1>
+        <span>forbidden or Error</span>
+        <span>Click <a th:href="@{/api/user/login}">here</a> to login.</span>
+    </div>
+    <table class="table table-striped" id="fileTable" th:if="${apiError}">
+        <tbody>
+        <tr>
+            <th>
+                Status
+            </th>
+            <td id="responseStatus" th:text="${apiError.status}"></td>
+        </tr>
+        <tr>
+            <th>
+                Timestamp
+            </th>
+            <td th:text="${apiError.timestamp}"></td>
+        </tr>
+        <tr>
+            <th>
+                Message
+            </th>
+            <td th:text="${apiError.message}"></td>
+        </tr>
+        <tr th:if="${apiError.debugMessage}">
+            <th>
+                Debug Message
+            </th>
+            <td th:text="${apiError.debugMessage}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
